@@ -1,0 +1,109 @@
+- if user_signed_in?
+  - if @post.profile.user == current_user
+    - if @post.image.present?
+      #post_show_mobile
+        %p.username
+          Sent to you on
+          = @post.created_at
+          (#{time_ago_in_words(@post.created_at)} ago).
+        .clearfix
+          .post_description
+          - if @post.line1.present?
+            %h1 Caption: #{@post.line1}
+            .post_image_description
+              = image_tag @post.image.url
+          - else
+            .post_image_description
+              = image_tag @post.image.url
+
+      %h1 See Messages Sent and Received for this Post/Photo below:
+      #comments
+        - @post.messages.each do |message|
+          - if message.user == current_user
+            .message
+              %h1 You: #{message.line1} (Sent - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+          - else
+            .message
+              %h1 #{message.line1} (Received - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+
+      = simple_form_for([@post, @post.messages.build]) do |f|
+        = f.input :line1, label: false, placeholder: "Write your Message to reply & Send from below.", :input_html => {class: 'login5-m'}
+        = submit_tag "Send Now", name: nil, class: "button-m3"
+
+    - else
+      #post_show_mobile
+        %p.username
+          Sent to you on
+          = @post.created_at
+          (#{time_ago_in_words(@post.created_at)} ago).
+        .clearfix
+          .post_description
+            %h1 #{@post.line1}
+
+      #comments
+        - @post.messages.each do |message|
+          - if message.user == current_user
+            .message
+              %h1 You: #{message.line1} (Sent - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+          - else
+            .message
+              %h1 #{message.line1} (Received - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+
+      = simple_form_for([@post, @post.messages.build]) do |f|
+        = f.input :line1, label: false, placeholder: "Write your Message to reply & Send from below.", :input_html => {class: 'login5-m'}
+        = submit_tag "Send Now", name: nil, class: "button-m3"
+
+  - elsif @post.user == current_user
+    - if @post.image.present?
+      #post_show_mobile
+        %p.username
+          Sent by You to #{@post.profile.user.name} on
+          = @post.created_at
+          (#{time_ago_in_words(@post.created_at)} ago).
+        .clearfix
+          - if @post.line1.present?
+            %h1 Caption: #{@post.line1}
+            .post_image_description
+              = image_tag @post.image.url
+          - else
+            .post_image_description
+              = image_tag @post.image.url
+
+      %h1 See Messages by #{@post.profile.user.name} for your Post below:
+      #comments
+        - @post.messages.each do |message|
+          - if message.user == current_user
+            .message
+              %h1 You: #{message.line1} (Sent - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+          - elsif message.user == @post.profile.user
+            .message
+              %h1 #{@post.profile.user.name}: #{message.line1} (Received - #{time_ago_in_words(message.created_at)} ago)
+    - else
+      #post_show_mobile
+        %p.username
+          Sent by You to #{@post.profile.user.name} on
+          = @post.created_at
+          (#{time_ago_in_words(@post.created_at)} ago).
+        .clearfix
+          .post_description
+            %h1 You: #{@post.line1}
+
+      %h1 See Replies by #{@post.profile.user.name} to your Message, Feedback or Question below:
+      #comments
+        - @post.messages.each do |message|
+          - if message.user == current_user
+            .message
+              %h1 You: #{message.line1} (Sent - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+          - elsif message.user == @post.profile.user
+            .message
+              %h1 #{@post.profile.user.name}: #{message.line1} (Received - #{time_ago_in_words(message.created_at)} ago)
+
+    = simple_form_for([@post, @post.messages.build]) do |f|
+      = f.input :line1, label: false, placeholder: "Write your Message to reply & Send from below.", :input_html => {class: 'login5-m'}
+      = submit_tag "Send Now", name: nil, class: "button-m3"
+
+  - else
+    %h1 Sorry but this Page doesn't exist.
+
+- else
+  %h1 Sorry but this Page doesn't exist.

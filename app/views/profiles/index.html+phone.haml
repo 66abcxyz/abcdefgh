@@ -1,0 +1,22 @@
+%p#instavoto2-m
+  "InstaSecret is the best Anonymous Social Network of the world. It's the Easiest, Coolest and Most Secure."
+  %br/
+%p#intro2-m
+  1. Just Sign Up and Share your Profile Link with your Friends and Everyone on Instagram, Facebook, Whatsapp, Snapchat, Twitter etc.
+  %br/
+%p#intro2-m
+  2. See what your Friends and Everyone sends you Anonymously. Anyone can send you Anything and You can see, reply and delete sent Posts & Messages.
+  %br/
+%p#intro2-m
+  You can Anonymously send Honest Feedbacks, Messages, Photos, Ask a Question and can do a lot more. No name will be shown. Anybody can send anything without even Signing In. Sign Up If you want your own Profile & replies on your Posts and Messages.
+  %br/
+
+#users
+  - @profiles.each do |profile|
+    .user
+      .user_image
+        = link_to (image_tag profile.user.image.url(:small)), profile
+      .user_content
+        .data.clearfix
+          %p.username
+            = link_to profile.user.name, profile

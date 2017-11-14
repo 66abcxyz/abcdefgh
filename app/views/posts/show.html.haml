@@ -1,0 +1,101 @@
+- if user_signed_in?
+  - if @post.profile.user == current_user
+    - if @post.image.present?
+      #post_show
+        %p.username
+          Sent to you on
+          = @post.created_at
+          (#{time_ago_in_words(@post.created_at)} ago).
+        .clearfix
+          .post_description
+          - if @post.line1.present?
+            .post_image_description
+              = image_tag @post.image.url
+              %h3 Caption: #{@post.line1}
+          - else
+            .post_image_description
+              = image_tag @post.image.url
+
+      %h3 See Messages Sent and Received for this Post/Photo below:
+      #comments
+        - @post.messages.each do |message|
+          - if message.user == current_user
+            .message
+              %h4 You: #{message.line1} (Sent - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+          - else
+            .message
+              %h4 Unknown User: #{message.line1} (Received - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+
+      = render "messages/form"
+    - else
+      #post_show
+        %p.username
+          Sent to you on
+          = @post.created_at
+          (#{time_ago_in_words(@post.created_at)} ago).
+        .clearfix
+          .post_description
+            %h3 #{@post.line1}
+
+      #comments
+        - @post.messages.each do |message|
+          - if message.user == current_user
+            .message
+              %h4 You: #{message.line1} (Sent - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+          - else
+            .message
+              %h4 Unknown User: #{message.line1} (Received - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+
+      = render "messages/form"
+
+  - elsif @post.user == current_user
+    - if @post.image.present?
+      #post_show
+        %p.username
+          Sent by You to #{@post.profile.user.name} on
+          = @post.created_at
+          (#{time_ago_in_words(@post.created_at)} ago).
+        .clearfix
+          - if @post.line1.present?
+            .post_image_description
+              = image_tag @post.image.url
+              %h3 Caption: #{@post.line1}
+          - else
+            .post_image_description
+              = image_tag @post.image.url
+
+      %h3 See Messages by #{@post.profile.user.name} for your Post below:
+      #comments
+        - @post.messages.each do |message|
+          - if message.user == current_user
+            .message
+              %h4 You: #{message.line1} (Sent - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+          - elsif message.user == @post.profile.user
+            .message
+              %h4 #{@post.profile.user.name}: #{message.line1} (Received - #{time_ago_in_words(message.created_at)} ago)
+    - else
+      #post_show
+        %p.username
+          Sent by You to #{@post.profile.user.name} on
+          = @post.created_at
+          (#{time_ago_in_words(@post.created_at)} ago).
+        .clearfix
+          .post_description
+            %h3 You: #{@post.line1}
+
+      %h3 See Replies by #{@post.profile.user.name} to your Message/Feedback/Question below:
+      #comments
+        - @post.messages.each do |message|
+          - if message.user == current_user
+            .message
+              %h4 You: #{message.line1} (Sent - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+          - elsif message.user == @post.profile.user
+            .message
+              %h4 #{@post.profile.user.name}: #{message.line1} (Received - #{time_ago_in_words(message.created_at)} ago)
+
+    = render "messages/form"
+  - else
+    %h3 Sorry but this Page doesn't exist.
+
+- else
+  %h3 Sorry but this Page doesn't exist.

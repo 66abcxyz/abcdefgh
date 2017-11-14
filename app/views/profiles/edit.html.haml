@@ -1,0 +1,9 @@
+- if user_signed_in?
+  - if @profile.user == current_user
+    .form-style-send-post3
+      = simple_form_for @profile do |f|
+        %h4= f.input :line1, label: "Change Your Profile Link(Use only Letters, Underscore & Numbers. No special characters.):", :input_html => {class: 'login3'}
+        = f.button :submit, "Submit Change", class: 'btn-lg btn-default'
+
+  - else
+    %h3 We're Sorry but This Page doesn't exist.

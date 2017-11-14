@@ -1,0 +1,17 @@
+.form-style-profile
+  %h1 Edit Your Information:
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    %h3= f.error_notification
+    .form-inputs
+      %h2 Your Searchable Information(Anyone can Search you from this Information):
+      %h4= f.input :name, required: true, autofocus: true, input_html: { class: 'login' }
+      %h4= f.input :email,  label: "E-Mail:(Change your E-Mail if it's very Needed or important.)", required: true, autofocus: true, :input_html => {class: 'login'}
+
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %p
+          Currently waiting confirmation for: #{resource.unconfirmed_email}
+      %h4= f.input :password, label: "Password:(Leave it blank if you don't want to change it.)", autocomplete: "off", required: false, placeholder: "Leave it blank if you don't want to change your current Password", :input_html => {class: 'login'}
+      %h4= f.input :password_confirmation, label: "Password Confirmation:", required: false, placeholder: "Confirm your new Password", :input_html => {class: 'login'}
+      %h4= f.input :current_password, label: "Current Password:(We need your current password to confirm your changes.)", required: true, placeholder: "Type your current Password to confirm Changes.", :input_html => {class: 'login'}
+    .form-actions
+      = f.button :submit, "Update", class: 'btn-lg btn-default'

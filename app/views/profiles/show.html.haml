@@ -1,0 +1,65 @@
+- if user_signed_in?
+  - if @profile.user == current_user
+
+    %h3 See all Posts, Honest feedbacks and Messages you've received anonymously from People here. Reply them.
+    #posts
+      - @profile.posts.each do |post|
+        .post
+          .post_image
+            - if post.image.present?
+              = link_to (image_tag post.image.url(:small)), post
+            - else
+              %h2= link_to post.line1, post
+          .post_content
+            .data.clearfix
+              %p.username
+                Sent to You (#{time_ago_in_words(post.created_at)} ago).
+              %p.username2
+                = link_to "Delete", post_path(post), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }
+
+  - else
+    .form-style-user
+      %p#official Name: #{@profile.user.name}, Profile Link: instasecret.me/#{@profile.line1}
+      %p#official
+        Profile Picture:
+        = image_tag(@profile.user.image.url(:small), class: "img-circular")
+    %h2 Send anything you want(Photos, Honest Feedbacks, Messages or Ask Questions) Anonymously to #{@profile.user.name} from below.
+    .form-style-send-post
+      = simple_form_for([@profile, @profile.posts.build]) do |f|
+        = f.error_notification
+        %h4= f.input :line1, label: "Write and Send Message/Feedback/Question from below:", placeholder: "Write Honest Feedback, Message or Ask a Question:", :input_html => {class: 'login5'}
+        = f.button :submit, "Send Message/Feedback/Question", class: 'btn-lg btn-default'
+    .form-style-send-post2
+      = render "posts/form"
+
+    %h3 See what you've Sent to #{@profile.user.name} here below:
+    #posts
+      - @profile.posts.each do |post|
+        - if post.user == current_user
+          .post
+            .post_image
+              - if post.image.present?
+                = link_to (image_tag post.image.url(:small)), post
+              - else
+                %h2= link_to post.line1, post
+            .post_content
+              .data.clearfix
+                %p.username
+                  Sent (#{time_ago_in_words(post.created_at)} ago).
+                %p.username2
+                  = link_to "Delete", post_path(post), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }
+
+- else
+  .form-style-user
+    %p#official Name: #{@profile.user.name}, Profile Link: instasecret.me/#{@profile.line1}
+    %p#official
+      Profile Picture:
+      = image_tag(@profile.user.image.url(:small), class: "img-circular")
+  %h2 Send anything you want(Photos, Honest Feedbacks, Messages or Ask Questions) Anonymously to #{@profile.user.name} from below.
+  .form-style-send-post
+    = simple_form_for([@profile, @profile.posts.build]) do |f|
+      = f.error_notification
+      %h4= f.input :line1, label: "Write and Send Message/Feedback/Question from below:", placeholder: "Write Honest Feedback, Message or Ask a Question:", :input_html => {class: 'login5'}
+      = f.button :submit, "Send Message/Feedback/Question", class: 'btn-lg btn-default'
+  .form-style-send-post2
+    = render "posts/form"

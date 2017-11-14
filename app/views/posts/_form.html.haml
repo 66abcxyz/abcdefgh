@@ -1,0 +1,5 @@
+= simple_form_for([@profile, @profile.posts.build]) do |f|
+	= f.error_notification
+	%h4= f.input :image, label: "Upload and Send Photo/Post from below:", input_html: { class: 'login3' }
+	= f.input :line1, label: false, placeholder: "Write Photo/Post Caption", input_html: { class: 'login4' }
+	= f.button :submit, "Send Post", class: 'btn-lg btn-default'

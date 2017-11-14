@@ -1,0 +1,3 @@
+= simple_form_for([@post, @post.messages.build]) do |f|
+	= f.input :line1, label: false, placeholder: "Write your Message to reply & Send from below.", :input_html => {class: 'login7'}
+	= f.button :submit, "Send Message", class: 'btn-lg btn-default'
