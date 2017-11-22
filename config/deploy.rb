@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.9.1'
 
-set :application, 'instasecret'
+set :application, 'insecret'
 set :repo_url, 'git@github.com:66abcxyz/abcdef.git'
 
 set :passenger_restart_with_touch, true
@@ -10,7 +10,7 @@ set :passenger_restart_with_touch, true
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/deploy/instasecret'
+set :deploy_to, '/home/deploy/insecret'
 
 # Default value for :scm is :git
 # set :scm, :git
