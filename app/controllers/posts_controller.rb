@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 	def destroy
 		@post = Post.find(params[:id])
 		@post.destroy
-		redirect_back fallback_location: :back
+		redirect_to profile_path(@post.profile)
 	end
 
 	private

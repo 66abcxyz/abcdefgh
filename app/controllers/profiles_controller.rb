@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
-		@profiles = Profile.all.order("created_at ASC").limit(3)
+		@profiles = Profile.all.order("created_at ASC").limit(4)
 	end
 
 	def show
@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
 
 	def update
 		if @profile.update(profile_params)
-			redirect_to current_user, :notice => "Your Official Link is Successfully changed. Share it with your Friends and Everyone. You can change it Again."
+			redirect_to @profile, :notice => "Your Official Link is Successfully changed. Share it with your Friends and Everyone. You can change it Again."
 		else
 			render 'edit'
 		end

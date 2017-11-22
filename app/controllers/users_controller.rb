@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    user.line1 = request.remote_ip
     if @user.save
       redirect_to @user, :notice => "You have Succesfully Signed up! Here is Your Profile."
     else
@@ -18,7 +17,7 @@ class UsersController < ApplicationController
 	def update
     @user = User.find(params[:id])
 		if @user.update(user_params)
-			redirect_to current_user, :notice => "Your Profile Picture is Succesfully Updated!"
+			redirect_to profile_path(@user.profile), :notice => "Your Profile Picture is Succesfully Updated!"
 		else
 			render 'edit'
 		end

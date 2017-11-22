@@ -1,7 +1,7 @@
 !!!
 %html
 %head
-  %title InstaSecret
+  %title InSecret
   = stylesheet_link_tag    'application', media: 'all'
   = javascript_include_tag 'application'
   %link{:rel => "stylesheet", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"}
@@ -9,14 +9,14 @@
 %body
   %header
     .wrapper.clearfix
-      #logo= link_to "InstaSecret", root_path
+      #logo= link_to "InSecret", root_path
       %nav
         - if user_signed_in?
           .dropdown
             %button.dropbtn See Profile
             .dropdown-content
-              = link_to "See Your Inbox", current_user.profile
-              = link_to "Go to Your Profile", user_path(current_user)
+              = link_to "Go to Your Profile", current_user.profile
+              = link_to "See what You've Sent", user_path(current_user)
               = link_to "Edit Your Account", edit_user_registration_path
           = link_to "Log out", destroy_user_session_path, :method => :delete
         - else

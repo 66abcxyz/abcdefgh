@@ -6,7 +6,7 @@
   %h4 *Your E-Mail ID will be always used for Login. So Choose the E-Mail ID you use Everywhere.
   = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .form-inputs
-      %h4= f.input :email, label: "E-Mail ID:", required: false, autofocus: true, placeholder: 'Type Your E-Mail ID.', input_html: { class: 'login' }
+      %h4= f.input :email, label: "E-Mail ID:", required: false, autocomplete:true, autofocus: true, placeholder: 'Type Your E-Mail ID.', input_html: { class: 'login' }
       %h4= f.input :password, label: "Password:", required: false, placeholder: 'Type your Password for secure Login.', input_html: { class: 'login' }
       %h4= f.input :remember_me, as: :boolean if devise_mapping.rememberable?
     .form-actions

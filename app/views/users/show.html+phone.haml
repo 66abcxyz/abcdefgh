@@ -1,23 +1,20 @@
 - if user_signed_in?
   - if @user == current_user
-    - @user.profiles.each do |profile|
-      %p#official-m
-        = link_to "See Your Inbox(Received Anonymous Posts, Feedbacks & Messages).", profile
+    %p#official-m
+      = link_to "See Your Inbox(Received Anonymous Posts, Feedbacks & Messages).", @user.profile
 
     .form-style-4-white
       #posts-mobile
-        - @user.profiles.each do |profile|
-          .form-style-user-m
-            %p#official-m
-              Name: #{@user.name}
-            %p#official-m
-              Your Profile Link: instasecret.me/#{profile.line1}
-            %p#official-m
-              Profile Picture:
-              = image_tag(@user.image.url(:small), class: "img-circular")
-      - @user.profiles.each do |profile|
-        %p#official-m
-          = link_to "Edit Your Profile Link.", edit_profile_path(profile)
+        .form-style-user-m
+          %p#official-m
+            Name: #{@user.name}
+          %p#official-m
+            Your Profile Link: instasecret.me/#{@user.profile.line1}
+          %p#official-m
+            Profile Picture:
+            = image_tag(@user.image.url(:small), class: "img-circular")
+      %p#official-m
+        = link_to "Edit Your Profile Link.", edit_profile_path(@user.profile)
 
       %h1 See what Posts, Messages and Anonymous Feedbacks you've sent to Everyone:
       #posts-mobile

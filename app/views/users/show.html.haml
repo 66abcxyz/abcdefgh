@@ -1,27 +1,9 @@
 - if user_signed_in?
   - if @user == current_user
     %p#official
-      = link_to "See Your Inbox(Received Anonymous Posts, Feedbacks & Messages).", @user.profile
-    %p#official
-      = link_to "Edit Your Profile Link.", edit_profile_path(@user.profile)
+      = link_to "Go back to Your Profile(See Received Anonymous Posts, Feedbacks & Messages).", @user.profile
 
-    .form-style-4-white
-      #posts
-        .form-style-user
-          %p#official
-            Name: #{@user.name},
-            Your Profile Link: instasecret.me/#{@user.profile.line1}
-          %p#official
-            Profile Picture:
-            = image_tag(@user.image.url(:small), class: "img-circular")
-        .form-style-upload-profile
-          = simple_form_for @user do |f|
-            %h4= f.error_notification
-            .form-inputs
-              %h4= f.input :image, label: "Change Profile Picture from here:", :input_html => {class: 'login6'}
-              = f.button :submit, "Upload Profile Picture", class: 'btn-lg btn-default'
-
-      %h3 See what Posts, Messages and Anonymous Feedbacks you've sent to Everyone:
+      %h3 See what Posts, Messages and Anonymous Feedbacks you've sent to Others:
       #posts
         - @user.posts.each do |post|
           .post

@@ -1,25 +1,45 @@
 - if user_signed_in?
   - if @profile.user == current_user
+    %p#official
+      = link_to "See What you've Sent to Others(Anonymous Posts, Feedbacks & Messages).", current_user
+    %p#official
+      = link_to "Edit Your Profile Link.", edit_profile_path(@profile)
 
-    %h3 See all Posts, Honest feedbacks and Messages you've received anonymously from People here. Reply them.
-    #posts
-      - @profile.posts.each do |post|
-        .post
-          .post_image
-            - if post.image.present?
-              = link_to (image_tag post.image.url(:small)), post
-            - else
-              %h2= link_to post.line1, post
-          .post_content
-            .data.clearfix
-              %p.username
-                Sent to You (#{time_ago_in_words(post.created_at)} ago).
-              %p.username2
-                = link_to "Delete", post_path(post), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }
+    .form-style-4-white
+      #posts
+        .form-style-user
+          %p#official
+            Name: #{@profile.user.name},
+            Your Profile Link: insecret.me/#{@profile.line1}
+          %p#official
+            Profile Picture:
+            = image_tag(@profile.user.image.url(:small), class: "img-circular")
+        .form-style-upload-profile
+          = simple_form_for @profile.user do |f|
+            %h4= f.error_notification
+            .form-inputs
+              %h4= f.input :image, label: "Change Profile Picture from here:", :input_html => {class: 'login6'}
+              = f.button :submit, "Change Profile Picture", class: 'btn-lg btn-default'
+
+      %h3 See all Posts, Honest feedbacks and Messages you've received anonymously from People here. Reply them.
+      #posts
+        - @profile.posts.each do |post|
+          .post
+            .post_image
+              - if post.image.present?
+                = link_to (image_tag post.image.url(:small)), post
+              - else
+                %h2= link_to post.line1, post
+            .post_content
+              .data.clearfix
+                %p.username
+                  Sent to You (#{time_ago_in_words(post.created_at)} ago).
+                %p.username2
+                  = link_to "Delete", post_path(post), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }
 
   - else
     .form-style-user
-      %p#official Name: #{@profile.user.name}, Profile Link: instasecret.me/#{@profile.line1}
+      %p#official Name: #{@profile.user.name}, Profile Link: insecret.me/#{@profile.line1}
       %p#official
         Profile Picture:
         = image_tag(@profile.user.image.url(:small), class: "img-circular")
@@ -51,7 +71,7 @@
 
 - else
   .form-style-user
-    %p#official Name: #{@profile.user.name}, Profile Link: instasecret.me/#{@profile.line1}
+    %p#official Name: #{@profile.user.name}, Profile Link: insecret.me/#{@profile.line1}
     %p#official
       Profile Picture:
       = image_tag(@profile.user.image.url(:small), class: "img-circular")

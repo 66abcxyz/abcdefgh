@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
 		@message.post_id = @post.id
 
 		if @message.save
-			redirect_back fallback_location: :back, :notice => "Your Message is Successfully Sent. See it below the post."
+			redirect_back fallback_location: :back, :notice => "Your Message is Successfully Sent. See it below."
 		else
 			render 'new'
 		end

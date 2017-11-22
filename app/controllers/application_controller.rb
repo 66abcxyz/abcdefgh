@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 	protected
 
 	def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :name, :username, :line1, :image, :password) }
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :name, :username, :line1, :image, :password, :password_confirmation) }
     devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:email, :password) }
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :name, :username, :line1, :image, :password, :current_password) }
 	end
@@ -25,6 +25,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    current_user
+    profile_path(@user.profile)
   end
 end
