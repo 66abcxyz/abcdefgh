@@ -379,7 +379,7 @@ h1, h2, h3, h4, h5, h6 {
 .form-style-signup-m{
     font: 100% Arial, Helvetica, sans-serif;
     width: 100%;
-		height: 1640px;
+		height: 1740px;
     margin: 10px auto;
 		margin-bottom: 50px;
 		padding-left: 50px;
@@ -538,6 +538,19 @@ h1, h2, h3, h4, h5, h6 {
 	width: 260px;
 }
 
+.button-m4{
+	height: 110px;
+	width: 280px;
+	text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 41px;
+	font-weight: 400;
+	border: 1.3px solid #A9A9A9;
+	color: black;
+	background-color: #EEF7FA;
+}
+
 .button-ma{
 	margin-top: 20px;
 	margin-bottom: 10px;
@@ -647,14 +660,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .form-style-upload-profile-m{
     font: 100% Arial, Helvetica, sans-serif;
-    width: 10%;
-		height: 270px;
-		margin-top: -280px;
-		margin-bottom: 130px;
-		margin-left: 800px;
-		padding: 30px;
-		padding-top: 10px;
-		padding-left: 50px;
+    width: 100%;
+		height: 360px;
+		margin-top: 10px;
+		padding: 20px;
     background: #F7F7F7;
 }
 
@@ -1105,7 +1114,7 @@ header-a {
     display: none;
     position: absolute;
     background-color: white;
-    min-width: 446px;
+    min-width: 486px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }

@@ -1,17 +1,14 @@
 - if user_signed_in?
-  %p#instavoto2-m
-    "InstaSecret is the best Anonymous Social Network of the world. It's the Easiest, Coolest and Most Secure."
+  %p#intro2-m
+    #{current_user.name}, Share Your link with Your Friends and Everyone so that they can Send you Anything Anonymously.
     %br/
   %p#intro2-m
     You can Anonymously send Honest Feedbacks, Messages, Photos, Ask a Question and can do a lot more. No name will be shown. Anybody can send anything without even Signing In. Sign Up If you want your own Profile & replies on your Posts and Messages.
     %br/
-  %p#intro2-m
-    #{current_user.name}, Share Your link with Your Friends and Everyone so that they can Send you Anything Anonymously.
-    %br/
 
 - else
   %p#instavoto2-m
-    "InstaSecret is the best Anonymous Social Network of the world. It's the Easiest, Coolest and Most Secure."
+    "InSecret is the best Anonymous Social Network of the world. It's the Easiest, Coolest and Most Secure."
     %br/
   %p#intro2-m
     1. Just Sign Up and Share your Profile Link with your Friends and Everyone on Instagram, Facebook, Whatsapp, Snapchat, Twitter etc.
@@ -23,7 +20,7 @@
     You can Anonymously send Honest Feedbacks, Messages, Photos, Ask a Question and can do a lot more. No name will be shown. Anybody can send anything without even Signing In. Sign Up If you want your own Profile & replies on your Posts and Messages.
     %br/
 
-  %p#search-h-m Some Examples of Users(You can Send Anything):
+  %p#search-h-m You will have profile like these Users after Signing up:
   #users_mobile
     - @profiles.each do |profile|
       .user

@@ -15,3 +15,6 @@
       %h1= f.input :current_password, label: "Current Password:(We need your current password to confirm your changes.)", required: true, placeholder: "Type your current Password to confirm Changes.", :input_html => {class: 'login-m'}
     .form-actions
       = submit_tag "Update Now", name: nil, class: "button-m2"
+
+  %h1 Wants to Delete your Account? Delete from Below:
+  %h1= link_to "Delete my Account Now.", registration_path(resource_name), data: { confirm: "Are you sure to Delete your Account. It will erase Everything(Your Received and Sent Posts.)?" }, method: :delete

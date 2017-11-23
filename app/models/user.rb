@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :messages, dependent: :destroy
   has_many :posts, -> { order "created_at DESC" }, dependent: :destroy
   validates :name, presence: true, length: { maximum: 28 }, format: { with: /\A[a-zA-Z ]+\Z/, message: "You can't have numbers and special characters in your Name. " }
-  validates :username, presence: true, uniqueness: true, length: { maximum: 36 }, format: { with: /\A[a-z0-9_.]+\Z/, message: "You can't have capital letters, spaces and special characters in your Username. " }
+  validates :username, presence: true, uniqueness: true, length: { maximum: 36 }, format: { with: /\A[a-z0-9_]+\Z/, message: "You can't have capital letters, spaces and special characters in your Username. " }
   validates :email, presence: true, uniqueness: true, length: { maximum: 44 }, format: { with: /\A[a-z0-9_.@]+\Z/, message: "You can't have capital letters, spaces and special characters in your E-Mail. " }
 
   mount_uploader :image, ImageUploader

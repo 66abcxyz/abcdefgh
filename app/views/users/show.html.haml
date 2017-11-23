@@ -1,9 +1,9 @@
 - if user_signed_in?
   - if @user == current_user
     %p#official
-      = link_to "Go back to Your Profile(See Received Anonymous Posts, Feedbacks & Messages).", @user.profile
+      = link_to "Go back to Profile.", @user.profile
 
-      %h3 See what Posts, Messages and Anonymous Feedbacks you've sent to Others:
+      %h2 See what Posts, Messages and Anonymous Feedbacks you've sent to Others:
       #posts
         - @user.posts.each do |post|
           .post
