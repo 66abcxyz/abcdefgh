@@ -58,7 +58,7 @@
         = submit_tag "Send Now!", class: 'button-m3'
 
     %h1 See what you've Sent to #{@profile.user.name} here below:
-    #posts_mobile
+    #posts-mobile
       - @profile.posts.each do |post|
         - if post.user == current_user
           .post
@@ -66,11 +66,11 @@
               - if post.image.present?
                 = link_to (image_tag post.image.url(:small)), post
               - else
-                %h2= link_to post.line1, post
+                %h1= link_to post.line1, post
             .post_content
               .data.clearfix
                 %p.username
-                  Sent (#{time_ago_in_words(post.created_at)} ago).
+                  Sent.
                 %p.username2
                   = link_to "Delete", post_path(post), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }
 
