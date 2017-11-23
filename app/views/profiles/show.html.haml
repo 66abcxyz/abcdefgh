@@ -1,7 +1,7 @@
 - if user_signed_in?
   - if @profile.user == current_user
     %p#official
-      = link_to "See What you've Sent to Others(Anonymous Posts, Feedbacks & Messages).", current_user
+      = link_to "See What you've Sent to Others(Anonymous Sent Items.)", current_user
     %p#official
       = link_to "Edit Your Profile Link.", edit_profile_path(@profile)
 
@@ -21,7 +21,7 @@
               %h4= f.input :image, label: "Change Profile Picture from here:", :input_html => {class: 'login6'}
               = f.button :submit, "Change Profile Picture", class: 'btn-lg btn-default'
 
-      %h3 See all Posts, Honest feedbacks and Messages you've received anonymously from People here. Reply them.
+      %h3 See all Posts, Honest feedbacks, Messages, Questions etc. you've received anonymously from People here. Reply them.
       #posts
         - @profile.posts.each do |post|
           .post
@@ -43,12 +43,12 @@
       %p#official
         Profile Picture:
         = image_tag(@profile.user.image.url(:small), class: "img-circular")
-    %h2 Send anything you want(Photos, Honest Feedbacks, Messages or Ask Questions) Anonymously to #{@profile.user.name} from below.
+    %h2 Send anything you want(Photos, Honest Feedbacks, Messages, Rumours or Ask Questions) Anonymously to #{@profile.user.name} from below.
     .form-style-send-post
       = simple_form_for([@profile, @profile.posts.build]) do |f|
         = f.error_notification
-        %h4= f.input :line1, label: "Write and Send Message/Feedback/Question from below:", placeholder: "Write Honest Feedback, Message or Ask a Question:", :input_html => {class: 'login5'}
-        = f.button :submit, "Send Message/Feedback/Question", class: 'btn-lg btn-default'
+        %h4= f.input :line1, label: "Write and Send Message/Feedback/Question/Rumour:", placeholder: "Write Honest Feedback, Send Message, Send Rumour or Ask a Question you want to know.", :input_html => {class: 'login5'}
+        = f.button :submit, "Send Message/Feedback/Question etc.", class: 'btn-lg btn-default'
     .form-style-send-post2
       = render "posts/form"
 
@@ -75,11 +75,11 @@
     %p#official
       Profile Picture:
       = image_tag(@profile.user.image.url(:small), class: "img-circular")
-  %h2 Send anything you want(Photos, Honest Feedbacks, Messages or Ask Questions) Anonymously to #{@profile.user.name} from below.
+  %h2 Send anything you want(Photos, Honest Feedbacks, Messages, Rumours or Ask Questions) Anonymously to #{@profile.user.name} from below.
   .form-style-send-post
     = simple_form_for([@profile, @profile.posts.build]) do |f|
       = f.error_notification
-      %h4= f.input :line1, label: "Write and Send Message/Feedback/Question from below:", placeholder: "Write Honest Feedback, Message or Ask a Question:", :input_html => {class: 'login5'}
-      = f.button :submit, "Send Message/Feedback/Question", class: 'btn-lg btn-default'
+      %h4= f.input :line1, label: "Write and Send Message/Feedback/Question/Rumour:", placeholder: "Write Honest Feedback, Send Message, Send Rumour or Ask a Question you want to know.", :input_html => {class: 'login5'}
+      = f.button :submit, "Send Message/Feedback/Question etc.", class: 'btn-lg btn-default'
   .form-style-send-post2
     = render "posts/form"
