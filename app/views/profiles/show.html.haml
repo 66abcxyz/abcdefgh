@@ -10,7 +10,7 @@
         .form-style-user
           %p#official
             Name: #{@profile.user.name},
-            Your Profile Link: insecret.me/#{@profile.line1}
+            Profile Link: insecret.me/#{@profile.line1}
           %p#official
             Profile Picture:
             = image_tag(@profile.user.image.url(:small), class: "img-circular")

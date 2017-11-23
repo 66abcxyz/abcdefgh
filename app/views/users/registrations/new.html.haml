@@ -1,8 +1,8 @@
 %p#intro2
-  If you already have an Account: #{link_to "Sign In", new_user_session_path}
+  IF YOU ALREADY HAVE AN ACCOUNT: #{link_to "SIGN IN", new_user_session_path}
   %br/
 .form-style-signup
-  %h2 SIGN UP:
+  %h2 SIGN UP OR REGISTER:
   %h4 *Your E-Mail ID will be used for Login. So Choose the E-Mail ID you use Everywhere(Google(G-Mail), Facebook, Instagram etc.). Your E-Mail ID will be Verified.
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     %h4= f.error_notification

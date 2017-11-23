@@ -367,7 +367,7 @@ h1, h2, h3, h4, h5, h6 {
 .form-style-signup{
     font: 100% Arial, Helvetica, sans-serif;
     width: 860px;
-		height: 930px;
+		height: 840px;
     margin: 10px auto;
 		margin-bottom: 50px;
 		padding-left: 50px;
@@ -520,12 +520,20 @@ h1, h2, h3, h4, h5, h6 {
 	color: black;
 	background-color: #EAFAEA;
 	height: 140px;
-	width: 260px;
+	width: 350px;
+}
+
+.button-m2:hover {background-color: #FCF9EF}
+
+.button-m2:active {
+  background-color: #FCF9EF;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .button-m3{
 	margin-top: 10px;
-	margin-left: 320px;
+	margin-left: 290px;
 	margin-bottom: 10px;
 	padding: 14px;
 	padding-left: 10px;
@@ -535,7 +543,15 @@ h1, h2, h3, h4, h5, h6 {
 	color: black;
 	background-color: #EEF7FA;
 	height: 150px;
-	width: 260px;
+	width: 350px;
+}
+
+.button-m3:hover {background-color: #FCF9EF}
+
+.button-m3:active {
+  background-color: #FCF9EF;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .button-m4{
@@ -549,6 +565,14 @@ h1, h2, h3, h4, h5, h6 {
 	border: 1.3px solid #A9A9A9;
 	color: black;
 	background-color: #EEF7FA;
+}
+
+.button-m4:hover {background-color: #FCF9EF}
+
+.button-m4:active {
+  background-color: #FCF9EF;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .button-ma{

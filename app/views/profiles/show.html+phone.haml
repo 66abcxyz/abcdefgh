@@ -1,7 +1,7 @@
 - if user_signed_in?
   - if @profile.user == current_user
     %p#official-m
-      = link_to "See What you've Sent to Others(Anonymous Sent Items.)", current_user
+      = link_to "See What you've Sent to Others.", current_user
 
     .form-style-4-white
       #posts_mobile
@@ -9,7 +9,7 @@
           %p#official-m
             Name: #{@profile.user.name}
           %p#official-m
-            Your Profile Link: insecret.me/#{@profile.line1}
+            Profile Link: insecret.me/#{@profile.line1}
           %p#official-m
             Profile Picture:
             = image_tag(@profile.user.image.url(:small), class: "img-circular")

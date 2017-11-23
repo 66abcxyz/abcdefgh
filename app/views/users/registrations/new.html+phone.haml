@@ -2,7 +2,7 @@
   ALREADY HAVE AN ACCOUNT: #{link_to "SIGN IN", new_user_session_path}
   %br/
 .form-style-signup-m
-  %p#instavoto2-m SIGN UP FROM BELOW:
+  %p#instavoto2-m SIGN UP OR REGISTER:
   %h1 *Your E-Mail ID will be used for Login. So Choose the E-Mail Carefully. Your E-Mail ID will be Verified.
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     %h1= f.error_notification
