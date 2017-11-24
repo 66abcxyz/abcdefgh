@@ -11,6 +11,6 @@
       %h4= f.input :email, label: "E-Mail ID:(Google(G-Mail), Facebook, Instagram, Twitter etc.(Verified))", required: true, autofocus: true, input_html: { class: 'login' }
       %h4= f.input :username, label: "Username or Profile Link:(Only Letters, Underscore and Numbers are allowed.)", required: true, autofocus: true, placeholder: 'This will be your Profile Link. You can also change it later.', input_html: { class: 'login' }
       %h4= f.input :password, label: "Password:(8 Characters minimum. Choose Strong Password.)", required: true, placeholder: 'Type Password.(Keep your Password Strong.)', input_html: { class: 'login' }
-      %h4= f.input :password_confirmation, label: "Confirm Your Password Again for Security:", required: true, placeholder: 'Confirm Your Password to Sign Up Securely to Instavoto.', input_html: { class: 'login' }
+      %h4= f.input :password_confirmation, label: "Confirm Your Password Again for Security:", required: true, placeholder: 'Confirm Your Password to Sign Up Securely.', input_html: { class: 'login' }
     .form-actions
       = f.button :submit, "Sign In", class: 'btn-lg btn-default'
