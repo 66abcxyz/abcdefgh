@@ -5,6 +5,15 @@
   %p#intro2
     You can Anonymously Send & Receive Honest Feedbacks, Messages, Photos, Rumours, Ask a Question and can do a lot more. No name will be shown. Your Friends can send anything without even Signing In. Sign Up If you want your own Profile & Replies on your Posts and Messages.
     %br/
+  %p#official
+    = link_to "Go to your Profile.", current_user.profile
+    %br/
+  %p#official
+    = link_to "See What you've Sent to Others.", current_user
+    %br/
+  %p#official
+    = link_to "Edit Your Account Information.", edit_user_registration_path
+    %br/
 
 - else
   %p#instavoto2

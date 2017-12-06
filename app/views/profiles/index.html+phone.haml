@@ -3,21 +3,36 @@
     #{current_user.name}, Share your Profile Link with Your Friends on Instagram, Facebook, Whatsapp, Snapchat, Twitter etc. so that they can Send you Anything Anonymously.
     %br/
   %p#intro2-m
-    You can Anonymously Send & Receive Honest Feedbacks, Messages, Photos, Rumours, Ask a Question and can do a lot more. No name will be shown. Your Friends can send anything without even Signing In. Sign Up If you want your own Profile & Replies on your Posts and Messages.
+    You can Anonymously Send & Receive Honest Feedbacks, Messages, Photos, Rumours, Ask a Question and can do a lot more. No name will be shown. Your Friends can send anything without even Signing In.
+    %br/
+  %p#official-m
+    = link_to "Go to your Profile.", current_user.profile
+    %br/
+  %p#official-m
+    = link_to "See What you've Sent to Others.", current_user
+    %br/
+  %p#official-m
+    = link_to "Edit Your Account Information.", edit_user_registration_path
     %br/
 
 - else
   %p#instavoto2-m
-    "Send and Receive Anything from your Friends Anonymously. InSecret is the best Anonymous Social Network of the world. It's the Easiest, Coolest and Most Secure."
+    "Send and Receive Messages, Honest Feedbacks, Posts, Rumours, Ask Questions etc. Anonymously with your Friends. Enjoy Anonymously with your Friends."
+    %br/
+  %p#instavoto2-m
+    #{link_to "SIGN IN", new_user_session_path} or #{link_to "SIGN UP", new_user_registration_path}
     %br/
   %p#intro2-m
     1. Just Sign Up and Share your Profile Link with your Friends on Instagram, Facebook, Whatsapp, Snapchat, Twitter etc.
     %br/
   %p#intro2-m
-    2. See what your Friends sends you Anonymously. Your Friends can send you Anything and You can see, reply and delete sent Posts & Messages.
+    2. See what your Friends sends you Anonymously. Your Friends can send you Anything and You can see, reply and delete sent posts.
     %br/
   %p#intro2-m
-    You can Anonymously Send & Receive Honest Feedbacks, Messages, Photos, Rumours, Ask a Question and can do a lot more. No name will be shown. Your Friends can send anything without even Signing In. Sign Up If you want your own Profile & wants to see Replies on your Posts and Messages.
+    No name will be shown. Your Friends can send anything without even Signing In. Sign Up If you want your own Profile & wants to see Replies on your Posts and Messages.
+    %br/
+  %p#instavoto2-m
+    InSecret is the best Anonymous Social Network of the World. 
     %br/
 
   %p#search-h-m You will have profile like these Users after Signing up:

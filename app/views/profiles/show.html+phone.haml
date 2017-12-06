@@ -21,7 +21,7 @@
               %h1= f.input :image, label: "Change Profile Picture from here:", :input_html => {class: 'login3-m'}
               = submit_tag "Change Now", name: nil, class: "button-m4"
 
-      %h1 See all Posts, Honest feedbacks and Messages you've received anonymously from People here. Reply them.
+      %p#official-m2 See all Posts, Honest feedbacks and Messages you've received anonymously from People here. Reply them.
       #posts-mobile
         - @profile.posts.each do |post|
           .post
@@ -48,7 +48,7 @@
     .form-style-send-post-m
       = simple_form_for([@profile, @profile.posts.build]) do |f|
         = f.error_notification
-        %h1= f.input :line1, label: "Write and Send Message/Feedback/Question/Rumour:", placeholder: "Write Honest Feedback, Send Message, Send Rumour or Ask a Question you want to know.", :input_html => {class: 'login5-m'}
+        %h1= f.input :line1, label: "Send Message/Feedback/Question/Rumour etc.:", placeholder: "Write Message, Honest Feedback, Ask a Question you want to know, Send Rumours, Start Chatting etc. (Anonymously).", :input_html => {class: 'login5-m'}
         = submit_tag "Send Now!", class: 'button-m3'
     .form-style-send-post2-m
       = simple_form_for([@profile, @profile.posts.build]) do |f|
@@ -81,15 +81,15 @@
     %p#official-m
       Profile Picture:
       = image_tag(@profile.user.image.url(:small), class: "img-circular")
-  %h1 Send anything you want(Photos, Honest Feedbacks, Messages, Rumours or Ask Questions) Anonymously to #{@profile.user.name} from below.
+  %p#official-m2 Send anything you want(Photos, Honest Feedbacks, Messages, Rumours or Ask Questions) Anonymously to #{@profile.user.name} from below.
   .form-style-send-post-m
     = simple_form_for([@profile, @profile.posts.build]) do |f|
       = f.error_notification
-      %h1= f.input :line1, label: "Write and Send Message/Feedback/Question/Rumour:", placeholder: "Write Honest Feedback, Send Message, Send Rumour or Ask a Question you want to know.", :input_html => {class: 'login5-m'}
+      %h1= f.input :line1, label: "Send Message/Feedback/Question/Rumour etc.:", placeholder: "Write Message, Honest Feedback, Ask a Question you want to know, Send Rumours, Start Chatting etc. (Anonymously).", :input_html => {class: 'login5-m'}
       = submit_tag "Send Now!", class: 'button-m3'
   .form-style-send-post2-m
     = simple_form_for([@profile, @profile.posts.build]) do |f|
       = f.error_notification
       %h1= f.input :image, label: "Upload and Send Photo/Post from below:", input_html: { class: 'login3-m' }
-      = f.input :line1, label: false, placeholder: "Write Photo/Post Caption.", input_html: { class: 'login4-m' }
+      = f.input :line1, label: false, placeholder: "Write Photo/Post Caption. You can also Send Photo/Post without Caption.", input_html: { class: 'login4-m' }
       = submit_tag "Send Now!", class: 'button-m3'

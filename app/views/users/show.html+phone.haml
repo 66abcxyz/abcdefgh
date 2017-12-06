@@ -3,7 +3,7 @@
     %p#official-m
       = link_to "Go back to Profile.", @user.profile
 
-      %h1 See what Posts, Messages and Anonymous Feedbacks you've sent to Others:
+      %p#official-m2 See what Messages, Feedbacks, Posts, Questions etc. you've sent Anonymously to Others:
       #posts-mobile
         - @user.posts.each do |post|
           .post

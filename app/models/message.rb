@@ -2,7 +2,7 @@ class Message < ApplicationRecord
   before_create :randomize_id
   belongs_to :user
   belongs_to :post
-  validates :line1, length: { maximum: 3000 }
+  validates :line1, length: { maximum: 3600 }
   private
   def randomize_id
     begin
