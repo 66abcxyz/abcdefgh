@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   		get 'search'
   	end
   end
-  resources :profiles, :path => '', :shallow => true do
+  resources :profiles, :shallow => true do
     resources :posts, :path => 'conversation' do
       resources :messages, :path => 'reply' do
       end

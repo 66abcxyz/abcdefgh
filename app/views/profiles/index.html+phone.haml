@@ -1,47 +1,37 @@
 - if user_signed_in?
   %p#intro2-m
-    #{current_user.name}, Share your Profile Link with Your Friends on Instagram, Facebook, Whatsapp, Snapchat, Twitter etc. so that they can Send you Anything Anonymously.
+    #{current_user.profile.line2}, You're logged in.
     %br/
   %p#intro2-m
-    You can Anonymously Send & Receive Honest Feedbacks, Messages, Photos, Rumours, Ask a Question and can do a lot more. No name will be shown. Your Friends can send anything without even Signing In.
+    Search Girls and Boys around you who play your favourite games that you Play. Just Type the location & game name you want to search.
+  %form{:action => search_path, :method => "get", class: "wrapper-search", role: "search" }
+    %p
+      = text_field_tag :search, params[:search], class: "search-m", placeholder: "Type Search location name & Games you play & press enter."
     %br/
   %p#official-m
-    = link_to "Go to your Profile.", current_user.profile
+    Search Game Examples: PUBG Mobile, Pubg Mobile Lite, Free Fire, COD Mobile etc.(Any Game you want)
+    Search Game Examples: Rajiv Chowk, New Delhi, India etc. (Search Any Place you want)
     %br/
   %p#official-m
-    = link_to "See What you've Sent to Others.", current_user
+    = link_to "Go to your Profile", current_user.profile
     %br/
   %p#official-m
-    = link_to "Edit Your Account Information.", edit_user_registration_path
+    = link_to "See Received & Sent Messages", current_user
+    %br/
+  %p#official-m
+    = link_to "Edit Your Email or Password", edit_user_registration_path
     %br/
 
 - else
-  %p#instavoto2-m
-    "Send and Receive Messages, Honest Feedbacks, Posts, Rumours, Ask Questions etc. Anonymously with your Friends. Enjoy Anonymously with your Friends."
+  %p#instavoto-m
+    Search Girls and Boys around you who play your favourite games that you Play. Just Type the location & game name you want to search.
+  %form{:action => search_path, :method => "get", class: "wrapper-search", role: "search" }
+    %p
+      = text_field_tag :search, params[:search], class: "search-m", placeholder: "Type Search location name & Games you play & press enter."
     %br/
-  %p#instavoto2-m
-    #{link_to "SIGN IN", new_user_session_path} or #{link_to "SIGN UP", new_user_registration_path}
+  %p#official-m
+    Search Game Examples: PUBG Mobile, Pubg Mobile Lite, Free Fire, COD Mobile etc.(Any Game you want)
     %br/
-  %p#intro2-m
-    1. Just Sign Up and Share your Profile Link with your Friends on Instagram, Facebook, Whatsapp, Snapchat, Twitter etc.
+  %p#official-m
+    Search Location Examples: Rajiv Chowk, New Delhi, India etc. (Search Any Place you want)
     %br/
-  %p#intro2-m
-    2. See what your Friends sends you Anonymously. Your Friends can send you Anything and You can see, reply and delete sent posts.
-    %br/
-  %p#intro2-m
-    No name will be shown. Your Friends can send anything without even Signing In. Sign Up If you want your own Profile & wants to see Replies on your Posts and Messages.
-    %br/
-  %p#instavoto2-m
-    InSecret is the best Anonymous Social Network of the World. 
-    %br/
-
-  %p#search-h-m You will have profile like these Users after Signing up:
-  #users_mobile
-    - @profiles.each do |profile|
-      .user
-        .user_image
-          = link_to (image_tag profile.user.image.url(:small)), profile
-        .user_content
-          .data.clearfix
-            %p.username
-              = link_to profile.user.name, profile

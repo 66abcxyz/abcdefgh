@@ -15,3 +15,9 @@
 /log/*.log
 /tmp
 public/system/posts/images/
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

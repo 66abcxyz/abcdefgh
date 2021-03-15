@@ -1,11 +1,10 @@
 .form-style-profile-m
-  %p#instavoto2-m EDIT YOUR ACCOUNT INFORMATION:
+  %p#instavoto2-m EDIT YOUR E-MAIL & PASSWORD:
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
     %h1= f.error_notification
     .form-inputs
       %h1 You have to confirm your current Password to Edit.
-      %h1= f.input :name, required: true, autofocus: true, input_html: { class: 'login-m' }
-      %h1= f.input :email,  label: "E-Mail:(Change your E-Mail if it's very Needed or important.)", required: true, autofocus: true, :input_html => {class: 'login-m'}
+      %h1= f.input :email,  label: "E-Mail:", required: true, autofocus: true, :input_html => {class: 'login-m'}
 
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         %p

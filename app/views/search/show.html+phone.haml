@@ -1,0 +1,38 @@
+- if user_signed_in?
+  - if params[:search].present?
+    %form{:action => search_path, :method => "get", class: "wrapper-search", role: "search" }
+      %p
+        = text_field_tag :search, params[:search], class: "search-m", placeholder: "You want to search again?"
+    .form-style-search-profile
+      %p#official-m
+        Total Users found: #{@profiles.count}
+        %br/
+    %p#official-m You've searched for #{params[:search]}. The Users found are:
+    #users_mobile
+      - @profiles.each do |profile|
+        .user
+          .user_image
+            = link_to (image_tag profile.user.image.url(:small)), profile
+          .user_content
+            .data.clearfix
+              %p.username
+                = link_to profile.line2, profile 
+  -else   
+    %p#instavoto-m
+      "YOU HAVEN'T TYPED ANYTHING TO SEARCH."
+      %br/
+    
+    %p#instavoto-m
+      Search Girls and Boys around you who play your favourite games that you Play. Just Type the location & game name you want to search.
+    %form{:action => search_path, :method => "get", class: "wrapper-search", role: "search" }
+      %p
+        = text_field_tag :search, params[:search], class: "search-m", placeholder: "Type Search location name & Games you play & press enter."
+      %br/
+    %p#official-m
+      Search Game Examples: PUBG Mobile, Pubg Mobile Lite, Free Fire, COD Mobile etc.(Any Game you want)
+      Search Game Examples: Rajiv Chowk, New Delhi, India etc. (Search Any Place you want)
+      %br/
+- else
+  %p#instavoto2-m
+    "YOU NEED TO LOGIN TO SEE PROFILES AND INFO OF USERS WE'VE FOUND ACCORDING TO YOUR SEARCH."
+    %br/    

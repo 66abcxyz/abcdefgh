@@ -1,16 +1,13 @@
 - if user_signed_in?
   - if @profile.user == current_user
     %p#official
-      = link_to "See What you've Sent to Others(Anonymous Sent Items.)", current_user
-    %p#official
-      = link_to "Edit Your Profile Link.", edit_profile_path(@profile)
-
+      = link_to "Add your Location & All other Games related information from this link:", edit_profile_path(@profile)
+            
     .form-style-4-white
       #posts
         .form-style-user
           %p#official
-            Name: #{@profile.user.name},
-            Profile Link: insecret.me/#{@profile.line1}
+            Name: #{@profile.line2}
           %p#official
             Profile Picture:
             = image_tag(@profile.user.image.url(:small), class: "img-circular")
@@ -20,66 +17,32 @@
             .form-inputs
               %h4= f.input :image, label: "Change Profile Picture from here:", :input_html => {class: 'login6'}
               = f.button :submit, "Change Profile Picture", class: 'btn-lg btn-default'
+              
+      %p#official Gender: #{@profile.line3}
+      %p#official Location: #{@profile.line11}
+      %p#official Games You Play: #{@profile.line12}
+      %p#official Your In-Game Names & ID Numbers: #{@profile.line13}
+      %p#official Games Statistics: #{@profile.line14}
+      %p#official Other Social Media details: #{@profile.line15}
 
-      %h3 See all Posts, Honest feedbacks, Messages, Questions etc. you've received anonymously from People here. Reply them.
-      #posts
-        - @profile.posts.each do |post|
-          .post
-            .post_image
-              - if post.image.present?
-                = link_to (image_tag post.image.url(:small)), post
-              - else
-                %h2= link_to post.line1, post
-            .post_content
-              .data.clearfix
-                %p.username
-                  Sent to You (#{time_ago_in_words(post.created_at)} ago).
-                %p.username2
-                  = link_to "Delete", post_path(post), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }
-
-  - else
+  - else    
     .form-style-user
-      %p#official Name: #{@profile.user.name}, Profile Link: insecret.me/#{@profile.line1}
+      %p#official Name: #{@profile.line2}
       %p#official
         Profile Picture:
         = image_tag(@profile.user.image.url(:small), class: "img-circular")
-    %h2 Send anything you want(Photos, Honest Feedbacks, Messages, Rumours or Ask Questions) Anonymously to #{@profile.user.name} from below.
+    %p#official Gender: #{@profile.line3}
+    %p#official Location: #{@profile.line11}
+    %p#official Games Playing: #{@profile.line12}
+    %p#official In-Game Names & ID Numbers: #{@profile.line13}
+    %p#official Games Statistics: #{@profile.line14}
+    %p#official Other Social Media details: #{@profile.line15} 
+    
     .form-style-send-post
       = simple_form_for([@profile, @profile.posts.build]) do |f|
         = f.error_notification
-        %h4= f.input :line1, label: "Write and Send Message/Feedback/Question/Rumour:", placeholder: "Write Honest Feedback, Send Message, Send Rumour or Ask a Question you want to know.", :input_html => {class: 'login5'}
-        = f.button :submit, "Send Message/Feedback/Question etc.", class: 'btn-lg btn-default'
-    .form-style-send-post2
-      = render "posts/form"
-
-    %h3 See what you've Sent to #{@profile.user.name} here below:
-    #posts
-      - @profile.posts.each do |post|
-        - if post.user == current_user
-          .post
-            .post_image
-              - if post.image.present?
-                = link_to (image_tag post.image.url(:small)), post
-              - else
-                %h2= link_to post.line1, post
-            .post_content
-              .data.clearfix
-                %p.username
-                  Sent (#{time_ago_in_words(post.created_at)} ago).
-                %p.username2
-                  = link_to "Delete", post_path(post), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }
+        %h3= f.input :line1, label: "Send Message to Start Conversation:", placeholder: "Write here & Click on Send button to Send Message.", :input_html => {class: 'login5'}
+        = f.button :submit, "Send Message", class: 'btn-lg btn-default'  
 
 - else
-  .form-style-user
-    %p#official Name: #{@profile.user.name}, Profile Link: insecret.me/#{@profile.line1}
-    %p#official
-      Profile Picture:
-      = image_tag(@profile.user.image.url(:small), class: "img-circular")
-  %h2 Send anything you want(Photos, Honest Feedbacks, Messages, Rumours or Ask Questions) Anonymously to #{@profile.user.name} from below.
-  .form-style-send-post
-    = simple_form_for([@profile, @profile.posts.build]) do |f|
-      = f.error_notification
-      %h4= f.input :line1, label: "Write and Send Message/Feedback/Question/Rumour:", placeholder: "Write Honest Feedback, Send Message, Send Rumour or Ask a Question you want to know.", :input_html => {class: 'login5'}
-      = f.button :submit, "Send Message/Feedback/Question etc.", class: 'btn-lg btn-default'
-  .form-style-send-post2
-    = render "posts/form"
+  %p#official Please SignUp or Login to view This User's Profile. You're not allowed to see it without Sign In.

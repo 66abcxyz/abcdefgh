@@ -1,8 +1,15 @@
 - if user_signed_in?
   - if @profile.user == current_user
+    %p#official You are Editing your Profile Information:
     .form-style-send-post3
       = simple_form_for @profile do |f|
-        %h4= f.input :line1, label: "Change Your Profile Link(Use only Letters, Underscore & Numbers. No special characters.):", :input_html => {class: 'login3'}
+        %h4= f.input :line2, label: "Change Your Name:", :input_html => {class: 'login3'}
+        %h4= f.input :line3, label: "Boy or Girl:", :input_html => {class: 'login3'}
+        %h4= f.input :line11, label: "Add Your Address or Location:", :input_html => {class: 'login3'}
+        %h4= f.input :line12, label: "Which Games do you Play:", :input_html => {class: 'login3'}
+        %h4= f.input :line13, label: "Your In-Game names & ID numbers:", :input_html => {class: 'login3'}
+        %h4= f.input :line14, label: "Your Games Statistics:", :input_html => {class: 'login3'}
+        %h4= f.input :line15, label: "Other Social Media details:", :input_html => {class: 'login3'}
         = f.button :submit, "Submit Change", class: 'btn-lg btn-default'
 
   - else

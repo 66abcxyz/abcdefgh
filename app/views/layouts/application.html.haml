@@ -1,7 +1,7 @@
 !!!
 %html
 %head
-  %title InSecret - Send and Receive Messages, Honest Feedbacks, Posts, Rumours, Ask Questions etc. Anonymously with your Friends.
+  %title GameBuddy - Search Girls and Boys around you who play your favourite game & play with them.
   = stylesheet_link_tag    'application', media: 'all'
   = javascript_include_tag 'application'
   %link{:rel => "stylesheet", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"}
@@ -9,15 +9,14 @@
 %body
   %header
     .wrapper.clearfix
-      #logo= link_to "InSecret", root_path
+      #logo= link_to "GameBuddy", root_path
       %nav
         - if user_signed_in?
           .dropdown
             %button.dropbtn See Profile
             .dropdown-content
               = link_to "Go to Your Profile", current_user.profile
-              = link_to "See what You've Sent", user_path(current_user)
-              = link_to "Edit Your Account", edit_user_registration_path
+              = link_to "Go to Messages", user_path(current_user)             
           = link_to "Log out", destroy_user_session_path, :method => :delete
         - else
           = link_to "Sign in", new_user_session_path

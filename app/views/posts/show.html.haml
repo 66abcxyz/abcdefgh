@@ -3,7 +3,9 @@
     - if @post.image.present?
       #post_show
         %p.username
-          Sent to you on
+          Sent by
+          = link_to @post.user.profile.line2, @post.user.profile
+          on
           = @post.created_at
           (#{time_ago_in_words(@post.created_at)} ago).
         .clearfix
@@ -29,7 +31,7 @@
                 %h4 You: #{message.line1} (Sent - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
             - else
               .message
-                %h4 Unknown User: #{message.line1} (Received - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+                %h4 #{@post.user.name}: #{message.line1} (Received - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
         = render "messages/form"
       - else
         %h3 You can't Reply because the User who Sent you this wasn't Registered or Logged in.
@@ -37,10 +39,13 @@
 
     - else
       #post_show
-        %p.username
-          Sent to you on
+        %p.username          
+          Sent by
+          = link_to @post.user.profile.line2, @post.user.profile
+          on
           = @post.created_at
           (#{time_ago_in_words(@post.created_at)} ago).
+          
         .clearfix
           .post_description
             %h3 #{@post.line1}
@@ -55,7 +60,7 @@
                 %h4 You: #{message.line1} (Sent - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
             - else
               .message
-                %h4 Unknown User: #{message.line1} (Received - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
+                %h4 #{@post.user.profile.line2}: #{message.line1} (Received - #{time_ago_in_words(message.created_at)} ago) #{link_to "Delete", message_path(message), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }}
 
         = render "messages/form"
       - else
@@ -77,7 +82,7 @@
             .post_image_description
               = image_tag @post.image.url
 
-      %h3 See Messages by #{@post.profile.user.name} for your Post below:
+      %h3 See Messages by #{@post.profile.user.name} from below:
       #comments
         - @post.messages.each do |message|
           - if message.user == current_user
@@ -96,7 +101,7 @@
           .post_description
             %h3 You: #{@post.line1}
 
-      %h3 See Replies by #{@post.profile.user.name} to your Message/Feedback/Question below:
+      %h3 See Replies by #{@post.profile.user.name} to your Message:
       #comments
         - @post.messages.each do |message|
           - if message.user == current_user

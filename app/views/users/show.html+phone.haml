@@ -2,20 +2,28 @@
   - if @user == current_user
     %p#official-m
       = link_to "Go back to Profile.", @user.profile
-
-      %p#official-m2 See what Messages, Feedbacks, Posts, Questions etc. you've sent Anonymously to Others:
+      
+      %p#official-m2 See Messages you've received:
       #posts-mobile
-        - @user.posts.each do |post|
+        - @user.profile.posts.each do |post|
           .post
-            .post_image
-              - if post.image.present?
-                = link_to (image_tag post.image.url(:small)), post
-              - else
-                %h2= link_to post.line1, post
+            %h2= link_to post.line1, post
             .post_content
               .data.clearfix
                 %p.username
-                  Sent to #{post.profile.user.name}.
+                  Sent By #{post.user.profile.line2} (#{time_ago_in_words(post.created_at)} ago).
+                %p.username2
+                  = link_to "Delete", post_path(post), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }
+                  
+      %p#official-m2 See Messages you've Sent to others:
+      #posts-mobile
+        - @user.posts.each do |post|
+          .post
+            %h2= link_to post.line1, post
+            .post_content
+              .data.clearfix
+                %p.username
+                  Sent to #{post.profile.user.profile.line2} (#{time_ago_in_words(post.created_at)} ago).
                 %p.username2
                   = link_to "Delete", post_path(post), method: :delete, data: { confirm: "You want to Delete. Are you sure?" }
 

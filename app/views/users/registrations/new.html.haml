@@ -1,15 +1,13 @@
 %p#intro2
-  IF YOU ALREADY HAVE AN ACCOUNT: #{link_to "SIGN IN", new_user_session_path}
+  ALREADY HAVE AN ACCOUNT?: #{link_to "SIGN IN", new_user_session_path}
   %br/
 .form-style-signup
   %h2 SIGN UP OR REGISTER:
-  %h4 *Your E-Mail ID will be used for Login. So Choose the E-Mail ID you use Everywhere(Google(G-Mail), Facebook, Instagram etc.). Your E-Mail ID will be Verified.
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     %h4= f.error_notification
     .form-inputs
-      %h4= f.input :name, label: "Your Name(Please use your Real Name):", required: true, autofocus: true, input_html: { class: 'login' }
-      %h4= f.input :email, label: "E-Mail ID:(Google(G-Mail), Facebook, Instagram, Twitter etc.(Verified))", required: true, autofocus: true, input_html: { class: 'login' }
-      %h4= f.input :username, label: "Username or Profile Link:(Only Letters, Underscore and Numbers are allowed.)", required: true, autofocus: true, placeholder: 'This will be your Profile Link. You can also change it later.', input_html: { class: 'login' }
+      %h4= f.input :name, label: "Your Name:", required: true, autofocus: true, input_html: { class: 'login' }
+      %h4= f.input :email, label: "Your E-Mail:", required: true, autofocus: true, input_html: { class: 'login' }
       %h4= f.input :password, label: "Password:(8 Characters minimum. Choose Strong Password.)", required: true, placeholder: 'Type Password.(Keep your Password Strong.)', input_html: { class: 'login' }
       %h4= f.input :password_confirmation, label: "Confirm Your Password Again for Security:", required: true, placeholder: 'Confirm Your Password to Sign Up Securely.', input_html: { class: 'login' }
     .form-actions

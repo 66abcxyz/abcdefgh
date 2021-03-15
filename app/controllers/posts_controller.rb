@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 		end
 
 		if @post.save
-			redirect_back fallback_location: :back, :notice => "You've Successfully Sent it. See it on this User and your Profile if You've Signed In."
+			redirect_back fallback_location: :back, :notice => "You've Successfully Sent the Message. See it in Messages."
 		else
 			render 'new'
 		end
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 	def destroy
 		@post = Post.find(params[:id])
 		@post.destroy
-		redirect_to profile_path(current_user)
+		redirect_to user_path(current_user)
 	end
 
 	private

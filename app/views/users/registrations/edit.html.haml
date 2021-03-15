@@ -1,11 +1,10 @@
 .form-style-profile
-  %h1 EDIT YOUR ACCOUNT INFORMATION:
+  %h1 EDIT YOUR E-MAIL & PASSWORD:
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
     %h3= f.error_notification
     .form-inputs
-      %h2 Your Searchable Information(Anyone can Search you from this Information):
-      %h4= f.input :name, required: true, autofocus: true, input_html: { class: 'login' }
-      %h4= f.input :email,  label: "E-Mail:(Change your E-Mail if it's very Needed or important.)", required: true, autofocus: true, :input_html => {class: 'login'}
+      %h2 You have to confirm your current Password to Edit.
+      %h4= f.input :email,  label: "E-Mail:", required: true, autofocus: true, :input_html => {class: 'login'}
 
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         %p

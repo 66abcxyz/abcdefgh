@@ -1,41 +1,38 @@
 - if user_signed_in?
   %p#instavoto2
-    #{current_user.name}, Share your Profile Link with Your Friends on Instagram, Facebook, Whatsapp, Snapchat, Twitter etc. so that they can Send you Anything Anonymously.
+    #{current_user.profile.line2}, You're logged in.
     %br/
-  %p#intro2
-    You can Anonymously Send & Receive Honest Feedbacks, Messages, Photos, Rumours, Ask a Question and can do a lot more. No name will be shown. Your Friends can send anything without even Signing In. Sign Up If you want your own Profile & Replies on your Posts and Messages.
+  .form-style-instavoto2
+    %p#instavoto
+      Search Girls and Boys around you who play your favourite games that you Play. Just Type the location & game name you want to search.
+    %form{:action => search_path, :method => "get", class: "wrapper-search", role: "search" }
+      %p
+        = text_field_tag :search, params[:search], class: "search", placeholder: "Type Search location name & Games you play & press enter."
+      %br/
+    %p#official
+      Search Game Examples: PUBG Mobile, Pubg Mobile Lite, Free Fire, COD Mobile etc.(Any Game you want)
+      Search Game Examples: Rajiv Chowk, New Delhi, India etc. (Search Any Place you want)
+      %br/
+  %p#official
+    = link_to "Go to your Profile", current_user.profile
     %br/
   %p#official
-    = link_to "Go to your Profile.", current_user.profile
+    = link_to "See Received & Sent Messages", current_user
     %br/
   %p#official
-    = link_to "See What you've Sent to Others.", current_user
-    %br/
-  %p#official
-    = link_to "Edit Your Account Information.", edit_user_registration_path
+    = link_to "Edit Your Email or Password", edit_user_registration_path
     %br/
 
 - else
-  %p#instavoto2
-    "Send and Receive Anything from your Friends Anonymously. InSecret is the best Anonymous Social Network of the world. It's the Easiest, Coolest and Most Secure."
-    %br/
-  %p#intro2
-    1. Just Sign Up and Share your Profile Link with your Friends on Instagram, Facebook, Whatsapp, Snapchat, Twitter etc.
-    %br/
-  %p#intro2
-    2. See what your Friends sends you Anonymously. Your Friends can send you Anything and You can see, reply and delete sent Posts & Messages.
-    %br/
-  %p#intro2
-    You can Anonymously Send & Receive Honest Feedbacks, Messages, Photos, Rumours, Ask a Question and can do a lot more. No name will be shown. Your Friends can send anything without even Signing In. Sign Up If you want your own Profile & wants to see Replies on your Posts and Messages.
-    %br/
+  .form-style-instavoto2
+    %p#instavoto
+      Search Girls and Boys around you who play your favourite games that you Play. Just Type the location & game name you want to search.
+    %form{:action => search_path, :method => "get", class: "wrapper-search", role: "search" }
+      %p
+        = text_field_tag :search, params[:search], class: "search", placeholder: "Type Search location name & Games you play & press enter."
+      %br/
+    %p#official
+      Search Game Examples: PUBG Mobile, Pubg Mobile Lite, Free Fire, COD Mobile etc.(Any Game you want)
+      Search Location Examples: Rajiv Chowk, New Delhi, India etc. (Search Any Place you want)
+      %br/
 
-  %p#search-h You will have profile like these Users after Signing up:
-  #users
-    - @profiles.each do |profile|
-      .user
-        .user_image
-          = link_to (image_tag profile.user.image.url(:small)), profile
-        .user_content
-          .data.clearfix
-            %p.username
-              = link_to profile.user.name, profile

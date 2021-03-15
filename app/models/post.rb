@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :profile
   has_many :messages, -> { order "created_at ASC" }, dependent: :destroy
-  validates :line1, length: { maximum: 9000 }, presence: true, if: "image.blank?"
+  validates :line1, length: { maximum: 9000 }, presence: true, if: -> { image.blank? }
   mount_uploader :image, ImageUploader
   private
   def randomize_id
