@@ -319,6 +319,7 @@ DEPENDENCIES
   selenium-webdriver
   simple_form
   spring
+  sshkit
   turbolinks (~> 5)
   tzinfo-data
   uglifier
