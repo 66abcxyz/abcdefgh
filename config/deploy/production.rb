@@ -1,5 +1,5 @@
 set :stage, :production
-server '65.0.76.41', user: 'deploy', roles: %w{app db web}
+server '13.234.136.12', user: 'ubuntu', roles: %w{app db web}
 
 set :ssh_options, {
    keys: %w(/home/devil/keypair.pem),

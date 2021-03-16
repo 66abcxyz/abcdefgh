@@ -1,8 +1,8 @@
 # config valid only for current version of Capistrano
 lock '3.16.0'
 
-set :application, 'insecret'
-set :repo_url, 'git@github.com:66abcxyz/abcdef.git'
+set :application, "insecret"
+set :repo_url, "git@github.com:66abcxyz/abcdef.git"
 
 set :passenger_restart_with_touch, true
 
@@ -10,7 +10,7 @@ set :passenger_restart_with_touch, true
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/deploy/insecret'
+set :deploy_to, "/home/deploy/#{fetch :application}"
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -31,7 +31,7 @@ set :deploy_to, '/home/deploy/insecret'
 # set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 append :linked_files, "config/database.yml", "config/secrets.yml"
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", ".bundle", "public/system", "public/uploads"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
